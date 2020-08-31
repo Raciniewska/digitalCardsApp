@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Digital Assembly Card</h2>
+<form>
+    <fieldset>
+        <legend>Add Digital Assembly Card</legend>
+        <div>
+            <label>PrNr:</label>
+            <input type="text" name="PrNr" value="" />
+        </div>
+        <div>
+            <label>Sort:</label>
+            <input type="text" name="sort" value="" />
+        </div>
+        <div>
+            <label>Numer sekwencji:</label>
+        </div>
+        <div>
+            <label>Kod kreskowy:</label>
+        </div>
+        <div>
+            <label>KNNR:</label>
+            <input type="text" name="KNNR" value="" />
+        </div>
+        <div>
+            <label>Employee number:</label>
+            <input type="text" name="EmployeeID" value="" />
+        </div>
+        <div>
+            <label>Employee first name:</label>
+            <input type="text" name="EmployeeFN" value="" />
+        </div>
+        <div>
+            <label>Employee last name:</label>
+            <input type="text" name="EmployeeLN" value="" />
+        </div>
+        <div>
+            <label>&nbsp;</label>
+            <input type="submit" value="Submit"  asp-controller="Create" asp-action="Submit"/>
+        </div>
+    </fieldset>
+</form>
+<!--<p>
+    <a asp-controller="Create" asp-action="Create">Create New</a>
+</p>
+-->
+

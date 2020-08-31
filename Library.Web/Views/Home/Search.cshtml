@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Builder
+@model List<string>
+
+@{ ViewData["Title"] = "Search";
+    var createdCards = (List<string>) @ViewData["createdCards"];
+}
+
+    <h2>Search</h2>
+
+<form asp-controller="Home" asp-action="Filter">
+    <p>
+        KNNR: <input type="text" name="SearchKNNR">
+        Employee Lastname: <input type="text" name="SearchEL">
+        Sort No.: <input type="text" name="SearchSort">
+        <input type="submit" value="filter" />
+    </p>
+</form>
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--<ul>-->
+            @foreach (var book in @Model)
+            {
+            <hr>
+            <p> @book </p>
+            <p><a>EDIT</a>   |   <a>DELETE</a>   |   <a>SEND AS EMAIL</a></p>
+            <br>}
+            <!--</ul>-->
+        </div>
+    </div>
