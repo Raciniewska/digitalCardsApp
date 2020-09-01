@@ -33,7 +33,7 @@ namespace Library.Web.Controllers
         }
        
 
-        public IActionResult About()
+        public  IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
@@ -46,11 +46,23 @@ namespace Library.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Search()
+        public async Task<IActionResult> Delete(string id)
+        {
+            try
+            {
+                await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.LibraryWebApiServiceHost}/api/library/Delete/" + id);
+            }
+            catch
+            {
+                return View("Views/Home/Search.cshtml");
+            }
+            return View("Views/Home/Search.cshtml");
+        }
+            public async Task<IActionResult> Search()
         {
             var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.LibraryWebApiServiceHost}/api/library/created/");
 
-            var model = createdCards.Select(resource => $"KNNR: {resource?.AssemblyCard?.KNNR} --- Employee Lastname: {resource?.AssemblyCard?.EmployeeLN} --- Sort No.: {resource?.AssemblyCard?.Sort}");
+            var model = createdCards;//.Select(resource => $"KNNR: {resource?.AssemblyCard?.KNNR} --- Employee Lastname: {resource?.AssemblyCard?.EmployeeLN} --- Sort No.: {resource?.AssemblyCard?.Sort}");
 
             return View(model.ToList());
         }

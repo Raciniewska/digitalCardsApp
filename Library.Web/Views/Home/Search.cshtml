@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Builder
-@model List<string>
+@model List<CardsResource>
 
 @{ ViewData["Title"] = "Search";
     var createdCards = (List<string>) @ViewData["createdCards"];
@@ -19,12 +19,14 @@
         <div class="col-md-12">
 
             <!--<ul>-->
-            @foreach (var book in @Model)
+            @if (Model != null)
+            {
+            @foreach (var resource in @Model)
             {
             <hr>
-            <p> @book </p>
-            <p><a>EDIT</a>   |   <a>DELETE</a>   |   <a>SEND AS EMAIL</a></p>
-            <br>}
+            <p> @resource.AssemblyCard.KNNR - @resource.AssemblyCard.Sort - @resource.AssemblyCard.EmployeeLN</p>
+            <p><a>EDIT</a>   |   <a  asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>   |   <a>SEND AS EMAIL</a></p>
+            <br>}}
             <!--</ul>-->
         </div>
     </div>

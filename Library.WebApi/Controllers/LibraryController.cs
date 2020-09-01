@@ -128,6 +128,18 @@ namespace Library.WebApi.Controllers
             return Ok();
         }
 
+        [HttpGet("Delete/{id}")]
+        public void Delete(string id)
+        {
+            var cardToDelete = _libraryCards.SingleOrDefault(r => r.Id == id);
+            if (cardToDelete == null)
+            {
+                return;
+            }
+            _libraryCards.Remove(cardToDelete);
+            return;
+        }
+
         [HttpGet("Create/{employeeLN}/{employeeFN}/{employeeID}/{knnr}/{sort}/{prnr}")]
         public void Create(string employeeLN, string employeeFN, string employeeID, string knnr, string sort, string prnr)
         {
