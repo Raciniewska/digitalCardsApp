@@ -2,7 +2,6 @@
 @model List<CardsResource>
 
 @{ ViewData["Title"] = "Search";
-    var createdCards = (List<string>) @ViewData["createdCards"];
 }
 
     <h2>Search</h2>
@@ -25,7 +24,8 @@
             {
             <hr>
             <p> @resource.AssemblyCard.KNNR - @resource.AssemblyCard.Sort - @resource.AssemblyCard.EmployeeLN</p>
-            <p><a>EDIT</a>   |   <a  asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>   |   <a>SEND AS EMAIL</a></p>
+            <p><a asp-controller="Home" asp-action="Edit" asp-route-id=@resource.Id>EDIT</a>
+            |   <a  asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>   |   <a>SEND AS EMAIL</a></p>
             <br>}}
             <!--</ul>-->
         </div>

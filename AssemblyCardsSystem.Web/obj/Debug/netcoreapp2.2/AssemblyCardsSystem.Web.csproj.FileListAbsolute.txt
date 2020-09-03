@@ -37,3 +37,5 @@ C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCa
 C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp2.2\AssemblyCardsSystem.Web.pdb
 C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp2.2\AssemblyCardsSystem.Web.genruntimeconfig.cache
 C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp2.2\AssemblyCardsSystem.Web.csproj.CopyComplete
+C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\Edit.cshtml.g.cs
+C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp2.2\Razor\Views\Home\EditSaved.cshtml.g.cs

@@ -1,0 +1,49 @@
+﻿@using Microsoft.AspNetCore.Builder
+@model CardsResource
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit Digital Assembly Card</h2>
+@if (@Model != null)
+{
+    <form>
+        <fieldset>
+            <legend>Add Digital Assembly Card</legend>
+            <div>
+                <label>PrNr:</label>
+                <input type="text" name="PrNr" value="@Model.AssemblyCard.PrNr" />
+            </div>
+            <div>
+                <label>Sort:</label>
+                <input type="text" name="sort" value="@Model.AssemblyCard.Sort" />
+            </div>
+            <div>
+                <label>Numer sekwencji:</label>
+            </div>
+            <div>
+                <label>Kod kreskowy:</label>
+            </div>
+            <div>
+                <label>KNNR:</label>
+                <input type="text" name="KNNR" value="@Model.AssemblyCard.KNNR" />
+            </div>
+            <div>
+                <label>Employee number:</label>
+                <input type="text" name="EmployeeID" value="@Model.AssemblyCard.EmployeeID" />
+            </div>
+            <div>
+                <label>Employee first name:</label>
+                <input type="text" name="EmployeeFN" value="@Model.AssemblyCard.EmployeeFN" />
+            </div>
+            <div>
+                <label>Employee last name:</label>
+                <input type="text" name="EmployeeLN" value="@Model.AssemblyCard.EmployeeLN" />
+            </div>
+            <div>
+                <label>&nbsp;</label>
+                <input type="submit" value="Submit" asp-controller="Create" asp-action="SaveEdit" asp-route-id=@Model.Id />
+            </div>
+        </fieldset>
+    </form>
+}

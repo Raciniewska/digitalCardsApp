@@ -140,6 +140,27 @@ namespace AssemblyCardsSystem.WebApi.Controllers
             return;
         }
 
+        [HttpGet("Edit/{id}")]
+        public CardsResource Edit(string id)
+        {
+            var cardToEdit = _libraryCards.SingleOrDefault(r => r.Id == id);
+            return cardToEdit;
+        }
+
+        [HttpGet("Edited/{id}/{employeeLN}/{employeeFN}/{employeeID}/{knnr}/{sort}/{prnr}")]
+        public CardsResource Edited(string id,string employeeLN, string employeeFN, string employeeID, string knnr, string sort, string prnr)
+        {
+
+            var cardToEdit = _libraryCards.SingleOrDefault(r => r.Id == id);
+            cardToEdit.AssemblyCard.EmployeeFN = employeeFN;
+            cardToEdit.AssemblyCard.EmployeeLN = employeeLN;
+            cardToEdit.AssemblyCard.EmployeeID = employeeID;
+            cardToEdit.AssemblyCard.KNNR = knnr;
+            cardToEdit.AssemblyCard.Sort = sort;
+            cardToEdit.AssemblyCard.PrNr = prnr;
+            return cardToEdit;
+        }
+
         [HttpGet("Create/{employeeLN}/{employeeFN}/{employeeID}/{knnr}/{sort}/{prnr}")]
         public void Create(string employeeLN, string employeeFN, string employeeID, string knnr, string sort, string prnr)
         {
@@ -156,7 +177,7 @@ namespace AssemblyCardsSystem.WebApi.Controllers
                     EmployeeID = employeeID,
                     KNNR = knnr,
                     Sort = sort,
-                    PrNr = prnr
+                    PrNr = prnr,
                 }
             });
             return;

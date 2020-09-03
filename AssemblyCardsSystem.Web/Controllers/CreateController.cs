@@ -18,6 +18,13 @@ namespace AssemblyCardsSystem.Web.Controllers
     {
         private readonly EnvironmentConfig _environmentConfiguration;
 
+        public async Task<IActionResult> saveEdit(string id,string EmployeeLN, string EmployeeFN, string EmployeeID, string KNNR, string sort, string PrNr)
+        {
+           
+            await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/Edited/"+id+"/" + EmployeeLN + "/" + EmployeeFN + "/" + EmployeeID + "/" + KNNR + "/" + sort + "/" + PrNr);
+            
+            return View("Views/Home/EditSaved.cshtml");
+        }
         public async Task<IActionResult> Submit(string EmployeeLN, string EmployeeFN, string EmployeeID, string KNNR, string sort, string PrNr)
         {
             try

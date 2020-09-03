@@ -46,7 +46,12 @@ namespace AssemblyCardsSystem.Web.Controllers
             return View();
         }
 
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Edit(string  id) {
+            var createdCard = await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/Edit/" + id);
+            return View(createdCard);
+        }
+
+            public async Task<IActionResult> Delete(string id)
         {
             try
             {
