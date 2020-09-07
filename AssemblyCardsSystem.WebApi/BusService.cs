@@ -15,6 +15,7 @@ namespace AssemblyCardsSystem.WebApi
             _busControl = busControl;
         }
 
+
         public Task StartAsync(CancellationToken cancellationToken)
         {
             return _busControl.StartAsync(cancellationToken);
