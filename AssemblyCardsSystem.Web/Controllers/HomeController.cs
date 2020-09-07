@@ -63,13 +63,30 @@ namespace AssemblyCardsSystem.Web.Controllers
             }
             return View("Views/Home/Search.cshtml");
         }
-            public async Task<IActionResult> Search()
+            public async Task<IActionResult> Search(string SearchKNNR, string SearchEL, string SearchSort)
         {
-            var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/created/");
+            
+                var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/created");
 
-            var model = createdCards;//.Select(resource => $"KNNR: {resource?.AssemblyCard?.KNNR} --- Employee Lastname: {resource?.AssemblyCard?.EmployeeLN} --- Sort No.: {resource?.AssemblyCard?.Sort}");
-
-            return View(model.ToList());
+                var model = createdCards;
+                List<CardsResource> resource = model.ToList();
+                if (!String.IsNullOrEmpty(SearchKNNR) || !String.IsNullOrEmpty(SearchEL) || !String.IsNullOrEmpty(SearchSort))
+                {
+                if (!String.IsNullOrEmpty(SearchKNNR)) {
+                    resource = resource.Where( s => s.AssemblyCard.KNNR.Contains(SearchKNNR)).ToList();
+                }
+                if (!String.IsNullOrEmpty(SearchEL))
+                {
+                    resource = resource.Where(s => s.AssemblyCard.KNNR.Contains(SearchEL)).ToList();
+                }
+                if (!String.IsNullOrEmpty(SearchEL))
+                {
+                    resource = resource.Where(s => s.AssemblyCard.KNNR.Contains(SearchSort)).ToList();
+                }
+            }
+                return View(resource);
+            
+          
         }
 
         public IActionResult Create()

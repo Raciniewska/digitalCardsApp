@@ -147,8 +147,8 @@ namespace AssemblyCardsSystem.WebApi.Controllers
             return cardToEdit;
         }
 
-        [HttpGet("Edited/{id}/{employeeLN}/{employeeFN}/{employeeID}/{knnr}/{sort}/{prnr}")]
-        public CardsResource Edited(string id,string employeeLN, string employeeFN, string employeeID, string knnr, string sort, string prnr)
+        [HttpGet("Edited/{id}/{sort}/{KNNR}/{employeeID}/{employeeFN}/{employeeLN}")]
+        public CardsResource Edited(string id,string employeeLN, string employeeFN, string employeeID, string knnr, string sort)
         {
 
             var cardToEdit = _libraryCards.SingleOrDefault(r => r.Id == id);
@@ -157,7 +157,6 @@ namespace AssemblyCardsSystem.WebApi.Controllers
             cardToEdit.AssemblyCard.EmployeeID = employeeID;
             cardToEdit.AssemblyCard.KNNR = knnr;
             cardToEdit.AssemblyCard.Sort = sort;
-            cardToEdit.AssemblyCard.PrNr = prnr;
             return cardToEdit;
         }
 
@@ -182,11 +181,12 @@ namespace AssemblyCardsSystem.WebApi.Controllers
             });
             return;
         }
-   
+
         [HttpGet("created")]
         public IEnumerable<CardsResource> GetCreated()
         {
-            return _libraryCards;
+
+                return _libraryCards;
         }
     }
 }
