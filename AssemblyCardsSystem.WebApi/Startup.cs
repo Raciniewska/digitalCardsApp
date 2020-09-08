@@ -71,7 +71,12 @@ namespace AssemblyCardsSystem.WebApi
             }
 
             app.UseHttpsRedirection();
-            app.UseMvc();
+            //app.UseMvc();
+            app.UseRouting();
+            app.UseCors();
+            app.UseEndpoints(endpoints => {
+                endpoints.MapControllers();
+            });
         }
     }
 }

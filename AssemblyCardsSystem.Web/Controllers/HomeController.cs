@@ -25,11 +25,8 @@ namespace AssemblyCardsSystem.Web.Controllers
 
          public async Task<IActionResult> Index()
         {
-            var rentedBooks = await RequestHandler.MakeRequest<List<LibraryResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/rented/");
-
-            var model = rentedBooks.Select(resource => $"{resource?.Id} - {resource?.Book?.Title}, {resource?.Book?.Author}");
           
-            return View(model.ToList());
+            return View();
         }
        
 
@@ -47,7 +44,7 @@ namespace AssemblyCardsSystem.Web.Controllers
         }
 
         public async Task<IActionResult> Edit(string  id) {
-            var createdCard = await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/Edit/" + id);
+            var createdCard = await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Edit/" + id);
             return View(createdCard);
         }
 
@@ -55,7 +52,7 @@ namespace AssemblyCardsSystem.Web.Controllers
         {
             try
             {
-                await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/Delete/" + id);
+                await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Delete/" + id);
             }
             catch
             {
@@ -66,7 +63,7 @@ namespace AssemblyCardsSystem.Web.Controllers
             public async Task<IActionResult> Search(string SearchKNNR, string SearchEL, string SearchSort)
         {
             
-                var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/created");
+                var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/created");
 
                 var model = createdCards;
                 List<CardsResource> resource = model.ToList();

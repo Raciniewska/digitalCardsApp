@@ -21,7 +21,7 @@ namespace AssemblyCardsSystem.Web.Controllers
         public async Task<IActionResult> saveEdit(string id,string EmployeeLN, string EmployeeFN, string EmployeeID, string KNNR, string sort)
         {
            
-            await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/Edited/"+id+"/" + EmployeeLN + "/" + EmployeeFN + "/" + EmployeeID + "/" + KNNR + "/" + sort );
+            await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Edited/"+id+"/" + EmployeeLN + "/" + EmployeeFN + "/" + EmployeeID + "/" + KNNR + "/" + sort );
             
             return View("Views/Home/EditSaved.cshtml");
         }
@@ -29,7 +29,7 @@ namespace AssemblyCardsSystem.Web.Controllers
         {
             try
             {
-                await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/library/Create/"+EmployeeLN+"/"+EmployeeFN+"/"+EmployeeID+"/"+KNNR+"/"+sort+"/"+PrNr);
+                await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Create/"+EmployeeLN+"/"+EmployeeFN+"/"+EmployeeID+"/"+KNNR+"/"+sort+"/"+PrNr);
             }
             catch
             {
