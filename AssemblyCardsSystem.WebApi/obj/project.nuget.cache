@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "pWIv4D4RH1ABpHkRZGqSO/XaAdisFlVaIxeqHAgZrNkhaqIkGuo3H/TO4eJSoYNa1u7VmV3kibHsFevHK3iQKw==",
+  "dgSpecHash": "LBZW5UKkdvBdOy8cjKWDDfm0Tt5AV+iulQDAP2J5Lbu993Zib5nnH3FJ+6Bv7rHZRZRDa3sBUEHP3LybU356pQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\rabar\\OneDrive\\Documents\\studia\\semestr 6\\KSR\\plikiLabDocker\\AssemblyCardsSystem\\AssemblyCardsSystem.WebApi\\AssemblyCardsSystem.WebApi.csproj",
   "expectedPackageFiles": [
@@ -138,8 +138,7 @@
     "C:\\Users\\rabar\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\rabar\\.nuget\\packages\\system.valuetuple\\4.5.0\\system.valuetuple.4.5.0.nupkg.sha512",
     "C:\\Users\\rabar\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\rabar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

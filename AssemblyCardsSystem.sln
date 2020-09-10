@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyCardsSystem.Web", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyCardsSystem.WebApi", "AssemblyCardsSystem.WebApi\AssemblyCardsSystem.WebApi.csproj", "{AEE8C950-4882-45EB-AE30-08CBB7FB59EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyCardsSystem.NotificationService", "AssemblyCardsSystem.NotificationService\AssemblyCardsSystem.NotificationService.csproj", "{2C5F5441-6517-41E5-A086-2C7D7F23C64D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyCardsSystem.MailService", "AssemblyCardsSystem.MailService\AssemblyCardsSystem.MailService.csproj", "{2C5F5441-6517-41E5-A086-2C7D7F23C64D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

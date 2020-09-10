@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "i/nxPXerJ2tRhr0CFP1hTu502WfhPgyCIjkk2fyIv4rdIC/ux4HS/uwDCi3ekBvZH717bFHEQ8F15Dy3pllGqQ==",
+  "dgSpecHash": "uSBrfYjT+s5SrIaimCFBhqAHAepffAhjxEWuS2DzAouuPdRmpLAUZesgFWzbCM98lZyldllXhrJqH/Ri1BIuog==",
   "success": true,
   "projectFilePath": "C:\\Users\\rabar\\OneDrive\\Documents\\studia\\semestr 6\\KSR\\plikiLabDocker\\AssemblyCardsSystem\\AssemblyCardsSystem.Web\\AssemblyCardsSystem.Web.csproj",
   "expectedPackageFiles": [
@@ -114,8 +114,7 @@
     "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
-    "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\rabar\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\rabar\\.nuget\\packages\\system.xml.xpath.xdocument\\4.3.0\\system.xml.xpath.xdocument.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

@@ -62,3 +62,5 @@ C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCa
 C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp3.1\AssemblyCardsSystem.Web.dll
 C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp3.1\AssemblyCardsSystem.Web.pdb
 C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp3.1\AssemblyCardsSystem.Web.genruntimeconfig.cache
+C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp3.1\AssemblyCardsSystem.Web.csprojAssemblyReference.cache
+C:\Users\rabar\OneDrive\Documents\studia\semestr 6\KSR\plikiLabDocker\AssemblyCardsSystem\AssemblyCardsSystem.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Send.cshtml.g.cs

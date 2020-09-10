@@ -60,7 +60,8 @@ namespace AssemblyCardsSystem.Web.Controllers
             }
             return View("Views/Home/Search.cshtml");
         }
-            public async Task<IActionResult> Search(string SearchKNNR, string SearchEL, string SearchSort)
+
+        public async Task<IActionResult> Search(string SearchKNNR, string SearchEL, string SearchSort)
         {
             
                 var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/created");
@@ -84,6 +85,18 @@ namespace AssemblyCardsSystem.Web.Controllers
                 return View(resource);
             
           
+        }
+        public IActionResult Send(string id)
+        {
+            try
+            {
+                RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Send/" + id);
+            }
+            catch
+            {
+                return View("Views/Home/Search.cshtml");
+            }
+            return View();
         }
 
         public IActionResult Create()
