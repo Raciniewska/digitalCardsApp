@@ -79,26 +79,31 @@ namespace AssemblyCardsSystem.MailService
         {
             var massage = new MimeMessage();
             massage.From.Add(new MailboxAddress("Barbara Raciniewska", "student172071@gmail.com"));
-            massage.To.Add(new MailboxAddress("to mail", "student172071@gmail.com"));
-
-            massage.Subject = "Assembly Card Data";
-            massage.Body = new TextPart("plain")
+            Console.WriteLine("Podaj do kogo chcesz wysłać maila:");
+            var receiver = Console.ReadLine();
+            if (receiver != null || receiver != "")
             {
-                Text = "Emloyee lastname: " + context.Message.EmployeeLN + "\n" +
-                "Employee firstname: " + context.Message.EmployeeFN + "\n" +
-                "Employee ID: " + context.Message.EmployeeID + "\n" +
-                "KNNR:" + context.Message.KNNR + "\n" +
-                "Sort " + context.Message.Sort + "\n" +
-                "PrNr" + context.Message.PrNr 
-            };
-            using (var client = new SmtpClient())
-            {
+                massage.To.Add(new MailboxAddress("to mail", receiver));
 
-                client.ServerCertificateValidationCallback = (s, c, h, e) => true;
-                client.Connect("smtp.gmail.com", 587, false);
-                client.Authenticate("student172071@gmail.com", "Student1@");
-                client.Send(massage);
-                client.Disconnect(true);
+                massage.Subject = "Assembly Card Data";
+                massage.Body = new TextPart("plain")
+                {
+                    Text = "Emloyee lastname: " + context.Message.EmployeeLN + "\n" +
+                    "Employee firstname: " + context.Message.EmployeeFN + "\n" +
+                    "Employee ID: " + context.Message.EmployeeID + "\n" +
+                    "KNNR:" + context.Message.KNNR + "\n" +
+                    "Sort " + context.Message.Sort + "\n" +
+                    "PrNr" + context.Message.PrNr
+                };
+                using (var client = new SmtpClient())
+                {
+
+                    client.ServerCertificateValidationCallback = (s, c, h, e) => true;
+                    client.Connect("smtp.gmail.com", 587, false);
+                    client.Authenticate("student172071@gmail.com", "Student1@");
+                    client.Send(massage);
+                    client.Disconnect(true);
+                }
             }
             return Task.CompletedTask;
         }
