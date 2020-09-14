@@ -27,15 +27,17 @@ namespace AssemblyCardsSystem.WebApi.Controllers
             return;
         }
 
-        [HttpGet("Send/{id}")]
-        public async Task<ActionResult> Send(string id)
+        [HttpGet("Send/{id}/{destinationEmail}")]
+        public async Task<ActionResult> Send(string id, string destinationEmail)
         {
              AssemblyCard cardToSend = dbConnector.cards.SingleOrDefault(r => r.CardId == id);
             if (cardToSend == null)
              {
                  return NotFound($"AssemblyCard with id: {id} does not exist");
              }
-             await _publishEndpoint.Publish<CardToSend>(new {EmployeeLN = cardToSend.EmployeeLN,
+             await _publishEndpoint.Publish<CardToSend>(new {
+                 destinationEmail = destinationEmail,
+                 EmployeeLN = cardToSend.EmployeeLN,
                  EmployeeFN = cardToSend.EmployeeFN,
                  EmployeeID = cardToSend.EmployeeID,
                  KNNR = cardToSend.KNNR,

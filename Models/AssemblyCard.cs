@@ -1,11 +1,16 @@
-﻿namespace AssemblyCardsSystem.WebApi.Models
+﻿using System;
+
+namespace Model
 {
-    public class CardToSend
+    [Serializable()]
+    public class AssemblyCard
     {
-        public string destinationEmail { get; set; }
+        public int Id { get; set; }
+        public string CardId { get; set; }
         public string EmployeeLN { get; set; }
         public string EmployeeFN { get; set; }
         public string EmployeeID { get; set; }
+        private DateTime CreationDate { get; set; }
         public string KNNR { get; set; }
         public string Sort { get; set; }
         public string PrNr { get; set; }

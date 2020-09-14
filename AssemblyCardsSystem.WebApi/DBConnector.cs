@@ -80,13 +80,13 @@ namespace AssemblyCardsSystem.WebApi
                         ms.Position = 0;
                         cards = bf.Deserialize(ms) as List<AssemblyCard>;
                         Console.WriteLine(" list of cards updated ");
-                        //channel.BasicAck(ea.DeliveryTag, false);
+                        channel.BasicAck(ea.DeliveryTag, false);
                     }
                 };
                 while (true)
                 {
                     channel.BasicConsume(queue: queueName,
-                     autoAck: true,
+                     autoAck: false,
                      consumer: consumer);
                 }
             }

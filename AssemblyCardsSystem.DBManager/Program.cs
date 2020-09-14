@@ -55,13 +55,13 @@ namespace AssemblyCardsSystem.DBManager
                     }
 
                     Console.WriteLine(" queue-card-create ");
-                    //channel.BasicAck(ea.DeliveryTag, false);
+                    channel.BasicAck(ea.DeliveryTag, false);
 
                 };
                 while (true)
                 {
                     channel.BasicConsume(queue: "queue-card-create",
-                                         autoAck: true,
+                                         autoAck: false,
                                          consumer: consumer);
                 };
             }
@@ -92,13 +92,13 @@ namespace AssemblyCardsSystem.DBManager
                         publishProducts();
                     }
                     Console.WriteLine(" queue-card-update ");
-                    //channel.BasicAck(ea.DeliveryTag, false);
+                    channel.BasicAck(ea.DeliveryTag, false);
                 };
                
                 while (true)
                 {
                     channel.BasicConsume(queue: "queue-card-update",
-                                        autoAck: true,
+                                        autoAck: false,
                                         consumer: consumer);
                 };
             }
@@ -123,13 +123,13 @@ namespace AssemblyCardsSystem.DBManager
                     deleteProduct(id);
                     publishProducts();
                     Console.WriteLine(" queue-card-delete ");
-                    //channel.BasicAck(ea.DeliveryTag, false);
+                    channel.BasicAck(ea.DeliveryTag, false);
                 };
 
                 while (true)
                 {
                     channel.BasicConsume(queue: "queue-card-delete",
-                     autoAck: true,
+                     autoAck: false,
                      consumer: consumer);
                 };
 

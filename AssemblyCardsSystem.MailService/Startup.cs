@@ -79,8 +79,8 @@ namespace AssemblyCardsSystem.MailService
         {
             var massage = new MimeMessage();
             massage.From.Add(new MailboxAddress("Barbara Raciniewska", "student172071@gmail.com"));
-            Console.WriteLine("Podaj do kogo chcesz wysłać maila:");
-            var receiver = Console.ReadLine();
+            Console.WriteLine(context.Message.destinationEmail);
+            var receiver = context.Message.destinationEmail;
             if (receiver != null || receiver != "")
             {
                 massage.To.Add(new MailboxAddress("to mail", receiver));

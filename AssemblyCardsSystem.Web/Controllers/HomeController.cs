@@ -23,14 +23,14 @@ namespace AssemblyCardsSystem.Web.Controllers
             _environmentConfiguration = configuration.Value;
         }
 
-         public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
-          
+
             return View();
         }
-       
 
-        public  IActionResult About()
+
+        public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
@@ -39,16 +39,17 @@ namespace AssemblyCardsSystem.Web.Controllers
 
         public IActionResult Contact()
         {
-           
+
             return View();
         }
 
-        public async Task<IActionResult> Edit(string  id) {
+        public async Task<IActionResult> Edit(string id)
+        {
             var createdCard = await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Edit/" + id);
             return View(createdCard);
         }
 
-            public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string id)
         {
             try
             {
@@ -63,34 +64,36 @@ namespace AssemblyCardsSystem.Web.Controllers
 
         public async Task<IActionResult> Search(string SearchKNNR, string SearchEL, string SearchSort)
         {
-            
-                var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/created");
 
-                var model = createdCards;
-                List<CardsResource> resource = model.ToList();
-                if (!String.IsNullOrEmpty(SearchKNNR) || !String.IsNullOrEmpty(SearchEL) || !String.IsNullOrEmpty(SearchSort))
+            var createdCards = await RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/created");
+
+            var model = createdCards;
+            List<CardsResource> resource = model.ToList();
+            if (!String.IsNullOrEmpty(SearchKNNR) || !String.IsNullOrEmpty(SearchEL) || !String.IsNullOrEmpty(SearchSort))
+            {
+                if (!String.IsNullOrEmpty(SearchKNNR))
                 {
-                if (!String.IsNullOrEmpty(SearchKNNR)) {
-                    resource = resource.Where( s => s.AssemblyCard.KNNR.Contains(SearchKNNR)).ToList();
+                    resource = resource.Where(s => s.AssemblyCard.KNNR.Contains(SearchKNNR)).ToList();
                 }
                 if (!String.IsNullOrEmpty(SearchEL))
                 {
-                    resource = resource.Where(s => s.AssemblyCard.KNNR.Contains(SearchEL)).ToList();
+                    resource = resource.Where(s => s.AssemblyCard.EmployeeLN.Contains(SearchEL)).ToList();
                 }
                 if (!String.IsNullOrEmpty(SearchEL))
                 {
-                    resource = resource.Where(s => s.AssemblyCard.KNNR.Contains(SearchSort)).ToList();
+                    resource = resource.Where(s => s.AssemblyCard.Sort.Contains(SearchSort)).ToList();
                 }
             }
-                return View(resource);
-            
-          
+            return View(resource);
+
+
         }
-        public IActionResult Send(string id)
+        public IActionResult Send(string id, string destinationEmail)
         {
+            Console.WriteLine(destinationEmail);
             try
             {
-                RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Send/" + id);
+                RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Send/" + id + "/" + destinationEmail);
             }
             catch
             {
@@ -113,7 +116,7 @@ namespace AssemblyCardsSystem.Web.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel {RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier});
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }
