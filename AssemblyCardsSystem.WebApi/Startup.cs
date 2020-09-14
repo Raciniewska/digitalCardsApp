@@ -22,6 +22,7 @@ namespace AssemblyCardsSystem.WebApi
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            var sdsd = DBConnector.GetInstance();
         }
 
         public IConfiguration Configuration { get; }

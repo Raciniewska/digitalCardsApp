@@ -14,9 +14,6 @@ namespace AssemblyCardsSystem.DBManager
 {
     using AssemblyCard = Model.AssemblyCard;
 
-
-    public class YourMessage { public string Text { get; set; } }
-
     class Program
     {
         private static ConnectionFactory factory;
@@ -52,12 +49,14 @@ namespace AssemblyCardsSystem.DBManager
                         ms.Write(body, 0, body.Length);
                         ms.Position = 0;
                         var card = bf.Deserialize(ms) as AssemblyCard;
+                        if(card.CardId != string.Empty)
                         insertProduct(card);
                         publishProducts();
                     }
 
                     Console.WriteLine(" queue-card-create ");
-                    
+                    //channel.BasicAck(ea.DeliveryTag, false);
+
                 };
                 while (true)
                 {
@@ -93,6 +92,7 @@ namespace AssemblyCardsSystem.DBManager
                         publishProducts();
                     }
                     Console.WriteLine(" queue-card-update ");
+                    //channel.BasicAck(ea.DeliveryTag, false);
                 };
                
                 while (true)
@@ -123,6 +123,7 @@ namespace AssemblyCardsSystem.DBManager
                     deleteProduct(id);
                     publishProducts();
                     Console.WriteLine(" queue-card-delete ");
+                    //channel.BasicAck(ea.DeliveryTag, false);
                 };
 
                 while (true)
@@ -167,6 +168,7 @@ namespace AssemblyCardsSystem.DBManager
                                      routingKey: "",
                                      basicProperties: null,
                                      body: body);
+                Console.WriteLine("Publish products");
             }
         }
 
