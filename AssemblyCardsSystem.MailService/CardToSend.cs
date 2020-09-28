@@ -2,6 +2,7 @@
 {
     public class CardToSend
     {
+        public string ReciverEmail { get; set; }
         public string EmployeeLN { get; set; }
         public string EmployeeFN { get; set; }
         public string EmployeeID { get; set; }

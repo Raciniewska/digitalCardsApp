@@ -43,6 +43,12 @@ namespace AssemblyCardsSystem.Web.Controllers
             return View();
         }
 
+        public IActionResult AdminLogin()
+        {
+
+            return View();
+        }
+
         public async Task<IActionResult> Edit(string  id) {
             var createdCard = await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Edit/" + id);
             return View(createdCard);
@@ -86,11 +92,11 @@ namespace AssemblyCardsSystem.Web.Controllers
             
           
         }
-        public IActionResult Send(string id)
+        public IActionResult Send(string id, string mail)
         {
             try
             {
-                RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Send/" + id);
+                RequestHandler.MakeRequest<List<CardsResource>>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Send/" + id+mail);
             }
             catch
             {

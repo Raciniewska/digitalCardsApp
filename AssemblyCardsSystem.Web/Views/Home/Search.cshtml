@@ -25,8 +25,11 @@
             <hr>
             <p> @resource.AssemblyCard.KNNR - @resource.AssemblyCard.Sort - @resource.AssemblyCard.EmployeeLN</p>
             <p><a asp-controller="Home" asp-action="Edit" asp-route-id=@resource.Id>EDIT</a>
-            |   <a  asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>   
-            |   <a  asp-controller="Home" asp-action="Send" asp-route-id=@resource.Id>SEND AS EMAIL</a></p>
+            |   <a  asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>  
+                <form asp-controller="Home" asp-action="Send"  asp-route-id=@resource.Id>
+                    |   <a asp-controller="Home" asp-action="Send"  asp-route-id=@resource.Id>SEND AS EMAIL</a> Type your email here: <input type="text" name="mail" />
+                </form>
+</p>
             <br>}}
             <!--</ul>-->
         </div>

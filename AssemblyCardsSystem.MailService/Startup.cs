@@ -79,11 +79,11 @@ namespace AssemblyCardsSystem.MailService
         {
             var massage = new MimeMessage();
             massage.From.Add(new MailboxAddress("Barbara Raciniewska", "student172071@gmail.com"));
-            Console.WriteLine("Podaj do kogo chcesz wysłać maila:");
-            var receiver = Console.ReadLine();
-            if (receiver != null || receiver != "")
-            {
-                massage.To.Add(new MailboxAddress("to mail", receiver));
+            //Console.WriteLine("Podaj do kogo chcesz wysłać maila:");
+            //var receiver = Console.ReadLine();
+            //if (receiver != null || receiver != "")
+            //{
+               massage.To.Add(new MailboxAddress("to mail", context.Message.ReciverEmail));
 
                 massage.Subject = "Assembly Card Data";
                 massage.Body = new TextPart("plain")
@@ -104,7 +104,7 @@ namespace AssemblyCardsSystem.MailService
                     client.Send(massage);
                     client.Disconnect(true);
                 }
-            }
+            //}
             return Task.CompletedTask;
         }
     }
