@@ -8,13 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AssemblyCardsSystem.WebApi.Controllers
 {
+    using AssemblyCard = Model.AssemblyCard;
     [Route("api/[controller]")]
-
     public class CardsController : Controller
     {
         private readonly IPublishEndpoint _publishEndpoint;
-
-        private static List<CardsResource> _Cards = new List<CardsResource>();
+        private static DBConnector dbConnector = DBConnector.GetInstance();
 
         public CardsController(IPublishEndpoint publishEndpoint)
         {
@@ -24,24 +23,25 @@ namespace AssemblyCardsSystem.WebApi.Controllers
         [HttpGet("Delete/{id}")]
         public void Delete(string id)
         {
-            var cardToDelete = _Cards.SingleOrDefault(r => r.Id == id);
-            if (cardToDelete == null)
-            {
-                return;
-            }
-            _Cards.Remove(cardToDelete);
+            dbConnector.Delete(id);
             return;
         }
 
+<<<<<<< HEAD
         [HttpGet("Send/{id}/{mail}")]
         public async Task<ActionResult> Send(string id, string mail)
+=======
+        [HttpGet("Send/{id}/{destinationEmail}")]
+        public async Task<ActionResult> Send(string id, string destinationEmail)
+>>>>>>> e2f048877cb28944170cf267c360cb378c891dcc
         {
-             var cardToSend = _Cards.SingleOrDefault(r => r.Id == id);
-             if (cardToSend == null)
+             AssemblyCard cardToSend = dbConnector.cards.SingleOrDefault(r => r.CardId == id);
+            if (cardToSend == null)
              {
                  return NotFound($"AssemblyCard with id: {id} does not exist");
              }
              await _publishEndpoint.Publish<CardToSend>(new {
+<<<<<<< HEAD
                  ReciverEmail = mail,
                  EmployeeLN = cardToSend.AssemblyCard.EmployeeLN,
                  EmployeeFN = cardToSend.AssemblyCard.EmployeeFN,
@@ -49,6 +49,15 @@ namespace AssemblyCardsSystem.WebApi.Controllers
                  KNNR = cardToSend.AssemblyCard.KNNR,
                  Sort = cardToSend.AssemblyCard.Sort,
                  PrNr = cardToSend.AssemblyCard.PrNr
+=======
+                 destinationEmail = destinationEmail,
+                 EmployeeLN = cardToSend.EmployeeLN,
+                 EmployeeFN = cardToSend.EmployeeFN,
+                 EmployeeID = cardToSend.EmployeeID,
+                 KNNR = cardToSend.KNNR,
+                 Sort = cardToSend.Sort,
+                 PrNr = cardToSend.PrNr
+>>>>>>> e2f048877cb28944170cf267c360cb378c891dcc
              });
             
             return Ok();
@@ -57,42 +66,45 @@ namespace AssemblyCardsSystem.WebApi.Controllers
         [HttpGet("Edit/{id}")]
         public CardsResource Edit(string id)
         {
-            var cardToEdit = _Cards.SingleOrDefault(r => r.Id == id);
-            return cardToEdit;
+            var cardToEdit = dbConnector.cards.SingleOrDefault(r => r.CardId == id);
+            return new CardsResource { Id = cardToEdit.CardId, AssemblyCard = cardToEdit };
         }
 
         [HttpGet("Edited/{id}/{sort}/{KNNR}/{employeeID}/{employeeFN}/{employeeLN}")]
         public CardsResource Edited(string id,string employeeLN, string employeeFN, string employeeID, string knnr, string sort)
         {
+            var card = new AssemblyCard
+            {
+                CardId = id,
+                EmployeeFN = employeeFN,
+                EmployeeLN = employeeLN,
+                EmployeeID = employeeID,
+                KNNR = knnr,
+                Sort = sort,
 
-            var cardToEdit = _Cards.SingleOrDefault(r => r.Id == id);
-            cardToEdit.AssemblyCard.EmployeeFN = employeeFN;
-            cardToEdit.AssemblyCard.EmployeeLN = employeeLN;
-            cardToEdit.AssemblyCard.EmployeeID = employeeID;
-            cardToEdit.AssemblyCard.KNNR = knnr;
-            cardToEdit.AssemblyCard.Sort = sort;
-            return cardToEdit;
+            };
+            dbConnector.Edited(card);
+
+            return new CardsResource { Id = id, AssemblyCard = card };
         }
 
         [HttpGet("Create/{employeeLN}/{employeeFN}/{employeeID}/{knnr}/{sort}/{prnr}")]
         public void Create(string employeeLN, string employeeFN, string employeeID, string knnr, string sort, string prnr)
         {
-            Guid guid = Guid.NewGuid();
-            string str = guid.ToString();
 
-            _Cards.Add(new CardsResource
-            {
-                Id = str,
-                AssemblyCard = new AssemblyCard
+                var card =  new AssemblyCard
                 {
+                    CardId = Guid.NewGuid().ToString(),
                     EmployeeFN = employeeFN,
                     EmployeeLN = employeeLN,
                     EmployeeID = employeeID,
                     KNNR = knnr,
                     Sort = sort,
                     PrNr = prnr,
-                }
-            });
+                    
+                };
+            dbConnector.Create(card);
+
             return;
         }
 
@@ -100,8 +112,7 @@ namespace AssemblyCardsSystem.WebApi.Controllers
         [HttpGet("created")]
         public IEnumerable<CardsResource> GetCreated()
         {
-
-                return _Cards;
+            return dbConnector.cards.Select(card => new CardsResource() { Id = card.CardId, AssemblyCard = card });
         }
     }
 }

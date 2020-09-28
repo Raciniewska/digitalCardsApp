@@ -18,7 +18,7 @@ namespace AssemblyCardsSystem.Web.Controllers
     {
         private readonly EnvironmentConfig _environmentConfiguration;
 
-        public async Task<IActionResult> saveEdit(string id,string EmployeeLN, string EmployeeFN, string EmployeeID, string KNNR, string sort)
+        public async Task<IActionResult> saveEdit(string id, string sort, string KNNR, string EmployeeID, string EmployeeFN, string EmployeeLN)
         {
            
             await RequestHandler.MakeRequest<CardsResource>($@"{_environmentConfiguration.AssemblyCardsSystemWebApiServiceHost}/api/Cards/Edited/"+id+"/" + EmployeeLN + "/" + EmployeeFN + "/" + EmployeeID + "/" + KNNR + "/" + sort );

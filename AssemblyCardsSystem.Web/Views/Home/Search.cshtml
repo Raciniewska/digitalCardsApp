@@ -4,7 +4,25 @@
 @{ ViewData["Title"] = "Search";
 }
 
-    <h2>Search</h2>
+<h2>Search</h2>
+
+<h2>Send Digital Assembly Card</h2>
+<form>
+    <fieldset>
+        <div>
+            <label>CardId:</label>
+            <input type="text" name="id" value="" />
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="text" name="destinationEmail" value="" />
+        </div>
+        <div>
+            <label>&nbsp;</label>
+            <input type="submit" value="Submit" asp-controller="Home" asp-action="Send" />
+        </div>
+    </fieldset>
+</form>
 
 <form asp-controller="Home" asp-action="Filter">
     <p>
@@ -14,23 +32,27 @@
         <input type="submit" asp-controller="Home" asp-action="Search" />
     </p>
 </form>
-    <div class="row">
-        <div class="col-md-12">
 
-            <!--<ul>-->
-            @if (Model != null)
-            {
+<div class="row">
+    <div class="col-md-12">
+        <!--<ul>-->
+        @if (Model != null)
+        {
             @foreach (var resource in @Model)
             {
-            <hr>
-            <p> @resource.AssemblyCard.KNNR - @resource.AssemblyCard.Sort - @resource.AssemblyCard.EmployeeLN</p>
-            <p><a asp-controller="Home" asp-action="Edit" asp-route-id=@resource.Id>EDIT</a>
-            |   <a  asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>  
-                <form asp-controller="Home" asp-action="Send"  asp-route-id=@resource.Id>
-                    |   <a asp-controller="Home" asp-action="Send"  asp-route-id=@resource.Id>SEND AS EMAIL</a> Type your email here: <input type="text" name="mail" />
+
+                <hr>
+                <p> @resource.AssemblyCard.KNNR - @resource.AssemblyCard.Sort - @resource.AssemblyCard.EmployeeLN</p>
+                <form asp-controller="Home" asp-action="Send">
+                    <p>
+                        <a asp-controller="Home" asp-action="Edit" asp-route-id=@resource.Id>EDIT</a>
+                        |   <a asp-controller="Home" asp-action="Delete" asp-route-id=@resource.Id>DELETE</a>
+                        |    CardId: <input type="text" readonly="readonly" value=@resource.Id>
+
+                    </p>
                 </form>
-</p>
-            <br>}}
-            <!--</ul>-->
-        </div>
+
+                <br>}}
+        <!--</ul>-->
     </div>
+</div>

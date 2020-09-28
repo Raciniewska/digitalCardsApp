@@ -78,12 +78,13 @@ namespace AssemblyCardsSystem.MailService
         public Task Consume(ConsumeContext<CardToSend> context)
         {
             var massage = new MimeMessage();
-            massage.From.Add(new MailboxAddress("Barbara Raciniewska", "student172071@gmail.com"));
-            //Console.WriteLine("Podaj do kogo chcesz wysłać maila:");
-            //var receiver = Console.ReadLine();
-            //if (receiver != null || receiver != "")
-            //{
-               massage.To.Add(new MailboxAddress("to mail", context.Message.ReciverEmail));
+
+            Console.WriteLine(context.Message.destinationEmail);
+            var receiver = context.Message.destinationEmail;
+            if (receiver != null || receiver != "")
+            {
+                massage.To.Add(new MailboxAddress("to mail", receiver));
+
 
                 massage.Subject = "Assembly Card Data";
                 massage.Body = new TextPart("plain")
