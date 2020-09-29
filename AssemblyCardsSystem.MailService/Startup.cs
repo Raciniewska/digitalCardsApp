@@ -105,7 +105,7 @@ namespace AssemblyCardsSystem.MailService
                     client.Send(massage);
                     client.Disconnect(true);
                 }
-            //}
+            }
             return Task.CompletedTask;
         }
     }

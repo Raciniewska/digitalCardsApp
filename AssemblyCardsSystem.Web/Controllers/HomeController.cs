@@ -43,7 +43,22 @@ namespace AssemblyCardsSystem.Web.Controllers
             return View();
         }
 
+        public IActionResult AdminConsole()
+        {
 
+            return View();
+        }
+
+        public IActionResult PlatformConfigure()
+        {
+
+            return View();
+        }
+        public IActionResult PlatformConfigurationSuccess()
+        {
+
+            return View();
+        }
         public IActionResult AdminLogin()
         {
 

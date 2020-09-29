@@ -27,13 +27,9 @@ namespace AssemblyCardsSystem.WebApi.Controllers
             return;
         }
 
-<<<<<<< HEAD
-        [HttpGet("Send/{id}/{mail}")]
-        public async Task<ActionResult> Send(string id, string mail)
-=======
+
         [HttpGet("Send/{id}/{destinationEmail}")]
         public async Task<ActionResult> Send(string id, string destinationEmail)
->>>>>>> e2f048877cb28944170cf267c360cb378c891dcc
         {
              AssemblyCard cardToSend = dbConnector.cards.SingleOrDefault(r => r.CardId == id);
             if (cardToSend == null)
@@ -41,15 +37,7 @@ namespace AssemblyCardsSystem.WebApi.Controllers
                  return NotFound($"AssemblyCard with id: {id} does not exist");
              }
              await _publishEndpoint.Publish<CardToSend>(new {
-<<<<<<< HEAD
-                 ReciverEmail = mail,
-                 EmployeeLN = cardToSend.AssemblyCard.EmployeeLN,
-                 EmployeeFN = cardToSend.AssemblyCard.EmployeeFN,
-                 EmployeeID = cardToSend.AssemblyCard.EmployeeID,
-                 KNNR = cardToSend.AssemblyCard.KNNR,
-                 Sort = cardToSend.AssemblyCard.Sort,
-                 PrNr = cardToSend.AssemblyCard.PrNr
-=======
+
                  destinationEmail = destinationEmail,
                  EmployeeLN = cardToSend.EmployeeLN,
                  EmployeeFN = cardToSend.EmployeeFN,
@@ -57,7 +45,6 @@ namespace AssemblyCardsSystem.WebApi.Controllers
                  KNNR = cardToSend.KNNR,
                  Sort = cardToSend.Sort,
                  PrNr = cardToSend.PrNr
->>>>>>> e2f048877cb28944170cf267c360cb378c891dcc
              });
             
             return Ok();
